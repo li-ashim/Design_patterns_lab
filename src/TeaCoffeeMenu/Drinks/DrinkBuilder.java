@@ -1,6 +1,5 @@
 package TeaCoffeeMenu.Drinks;
 
-import TeaCoffeeMenu.Components.Sugar;
 import TeaCoffeeMenu.Menu;
 
 public class DrinkBuilder {
@@ -23,12 +22,9 @@ public class DrinkBuilder {
         result.addComponent(Menu.getInstance().getComponents().get(componentId));  // Проверка соответствия айди делается в вызывающем коде.
     }
 
-    public void addSugar() {
-        result.addComponent(Sugar.getInstance());
-    }
-
-    public void removeSugar() {
-        result.removeComponent(Sugar.getInstance());
+    // Is not tested !!!
+    public void removeComponent(int componentId) {
+        result.removeComponent(Menu.getInstance().getComponents().get(componentId));
     }
 
     public void reset() {

@@ -5,9 +5,7 @@ import TeaCoffeeMenu.Components.Sugar;
 import TeaCoffeeMenu.Drinks.Drink;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Menu {
 

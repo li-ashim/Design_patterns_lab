@@ -1,7 +1,5 @@
 package TeaCoffeeMenu.Components;
 
-import java.util.ArrayList;
-
 public class Sugar extends Component {
     static private Sugar instance;
 
