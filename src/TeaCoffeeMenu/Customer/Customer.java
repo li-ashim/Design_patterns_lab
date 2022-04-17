@@ -1,5 +1,6 @@
 package TeaCoffeeMenu.Customer;
 
+import TeaCoffeeMenu.Components.Component;
 import TeaCoffeeMenu.Drinks.Drink;
 import TeaCoffeeMenu.Drinks.DrinkBuilder;
 import TeaCoffeeMenu.Drinks.DrinkBuilderDirector;
@@ -30,7 +31,6 @@ public class Customer {
         }
         String drinkType = menu.getDrinkTypes().get(scanner.nextInt()-1);
 
-
         DrinkBuilder db = DrinkBuilderDirector.getInstance().getBuilder(drinkType);
 
         System.out.println("Choose id of drink: ");
@@ -41,7 +41,21 @@ public class Customer {
         int drinkId = scanner.nextInt();
         db.initialize(drinkId);
 
+        HashMap<Integer, Component> typeComponents = menu.getSuitedComponents(drinkType);
+        System.out.println("Add ons:");
+        for (Integer cId : typeComponents.keySet()) {
+            System.out.println(cId + ": " + typeComponents.get(cId));
+        }
+        System.out.println("0: Continue");
+        int option = scanner.nextInt();
+        while (option != 0) {
+            db.addComponent(option);
+            option = scanner.nextInt();
+        }
+
         order.getItems().add(db.getResult());
+        System.out.println(db.getResult() + " added to order.");
+        db.reset();
     }
     public Order makeOrder() {
         return order;

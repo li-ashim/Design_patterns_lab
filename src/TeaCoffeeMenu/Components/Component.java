@@ -1,11 +1,17 @@
 package TeaCoffeeMenu.Components;
 
-public abstract class Component {
-    private String name;
-    private double price;
+import java.util.ArrayList;
 
-    abstract public String getName();
-    abstract public double getPrice();
+public abstract class Component {
+    protected String name;
+    protected double price;
+    protected ArrayList<String> suitedDrinkTypes;
+
+    public Component(String name, double price) {
+        this.name = name;
+        this.price = price;
+        suitedDrinkTypes = new ArrayList<>();
+    }
 
     @Override
     public String toString() {
@@ -13,5 +19,21 @@ public abstract class Component {
                 "name='" + name + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    public ArrayList<String> getSuitedDrinkTypes() {
+        return suitedDrinkTypes;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

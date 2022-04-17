@@ -1,29 +1,20 @@
 package TeaCoffeeMenu.Components;
 
+import java.util.ArrayList;
+
 public class Sugar extends Component {
     static private Sugar instance;
-    private double price = 10;
-    private final String name = "Сахар";
 
-    private Sugar() {}
+    private Sugar(String name, double price) {
+        super(name, price);
+        suitedDrinkTypes.add("чай");
+        suitedDrinkTypes.add("кофе");
+    }
     static public Sugar getInstance() {
         if (instance == null) {
-            instance = new Sugar();
+            instance = new Sugar("сахар", 5);
         }
         return instance;
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 }

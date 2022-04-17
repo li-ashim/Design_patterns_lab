@@ -11,6 +11,11 @@ public class TeaBuilder implements DrinkBuilder{
         result = Menu.getInstance().getBasicDrinks().get(drinkId).copy();
     }
 
+    @Override
+    public void addComponent(int componentId) {
+        result.addComponent(Menu.getInstance().getComponents().get(componentId));  // Проверка соответствия айди делается в вызывающем коде.
+    }
+
     public void addSugar() {
         result.addComponent(Sugar.getInstance());
     }

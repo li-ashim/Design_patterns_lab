@@ -5,6 +5,7 @@ import TeaCoffeeMenu.Components.Sugar;
 import TeaCoffeeMenu.Drinks.Drink;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -36,6 +37,8 @@ public class Menu {
     public HashMap<Integer, Component> getComponents() {
         return db.getComponents();
     }
+
+    public HashMap<Integer, Component> getSuitedComponents(String drinkType) { return db.getSuitedComponents(drinkType); }
 
     public void addDrink(Drink d) {
         db.addBasicDrink(d);
@@ -100,6 +103,16 @@ class DatabaseDummy {
         for (Integer id : basicDrinks.keySet()) {
             if (basicDrinks.get(id).getType() == drinkType) {
                 result.put(id, basicDrinks.get(id));
+            }
+        }
+        return result;
+    }
+
+    public HashMap<Integer, Component> getSuitedComponents(String drinkType) {
+        HashMap<Integer, Component> result = new HashMap<>();
+        for (Integer id : components.keySet()) {
+            if (components.get(id).getSuitedDrinkTypes().contains(drinkType)) {
+                result.put(id, components.get(id));
             }
         }
         return result;
