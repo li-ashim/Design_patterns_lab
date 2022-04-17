@@ -3,7 +3,6 @@ package TeaCoffeeMenu.Customer;
 import TeaCoffeeMenu.Components.Component;
 import TeaCoffeeMenu.Drinks.Drink;
 import TeaCoffeeMenu.Drinks.DrinkBuilder;
-import TeaCoffeeMenu.Drinks.DrinkBuilderDirector;
 import TeaCoffeeMenu.Menu;
 
 import java.util.HashMap;
@@ -31,7 +30,7 @@ public class Customer {
         }
         String drinkType = menu.getDrinkTypes().get(scanner.nextInt()-1);
 
-        DrinkBuilder db = DrinkBuilderDirector.getInstance().getBuilder(drinkType);
+        DrinkBuilder db = DrinkBuilder.getInstance();
 
         System.out.println("Choose id of drink: ");
         HashMap<Integer, Drink> typeDrinks = menu.getBasicDrinks(drinkType);
