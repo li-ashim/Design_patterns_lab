@@ -77,15 +77,15 @@ public class DatabaseDummy {
         return result;
     }
 
-    public void addBasicDrink(Drink d) {
+/*    public void addBasicDrink(Drink d) {
         basicDrinks.put(basicDrinks.size() + 1, d);
-    }
+    }*/
 
     public HashMap<Integer, Component> getComponents() {
         return components;
     }
 
-    public void addComponent(Component c) {
+/*    public void addComponent(Component c) {
         components.put(components.size() + 1, c);
-    }
+    }*/
 }

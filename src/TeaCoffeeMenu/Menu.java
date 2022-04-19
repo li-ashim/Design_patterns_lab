@@ -38,23 +38,23 @@ public class Menu {
         return db.getDrinkSize();
     }
 
-    public void addDrink(Drink d) {
+/*    public void addDrink(Drink d) {
         db.addBasicDrink(d);
     }
 
     public void addComponent(Component c) {
         db.addComponent(c);
-    }
+    }*/
 
 
-    /*Вывести меню: все напитки, компоненты и их цены*/
+/*    *//*Вывести меню: все напитки, компоненты и их цены*//*
     public void show(){
         System.out.println("Drinks: ");
         System.out.println(db.getBasicDrinks());
         System.out.println("Components: ");
         System.out.println(db.getComponents());
 
-    }
+    }*/
 
 
 }
