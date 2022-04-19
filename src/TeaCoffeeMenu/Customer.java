@@ -7,13 +7,11 @@ public class Customer {
     private long id;
     private String name;
     private Order order;
-    private DirectorBuilders dr;
 
     public Customer(String name) {
         this.id = (long) (Math.random() * 2 * Long.MAX_VALUE - Long.MAX_VALUE);
         this.name = name;
         order = new Order();
-        dr = DirectorBuilders.getInstance();
     }
 
 
@@ -40,7 +38,10 @@ public class Customer {
         }
         int drinkId = scanner.nextInt();
 
-        dr.makeDrink(db, typeDrinks.get(drinkId));
+        db.reset();
+        db.initialize(typeDrinks.get(drinkId));
+        db.addComponent();
+
 
         order.addDrink(db.getResult());
 
