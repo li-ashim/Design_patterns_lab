@@ -1,40 +1,61 @@
 package TeaCoffeeMenu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Menu {
     private static Menu instance;
-    private List<Drink> basicDrinks = new ArrayList<Drink>();
-    private List<Component> components = new ArrayList<Component>();
-
-    public Menu getInstance(){
+    private static DatabaseDummy db;
+    private Menu(){};
+    public static Menu getInstance(){
         if(instance == null){
+            db = DatabaseDummy.getInstance();
             instance = new Menu();
         }
         return instance;
     }
 
-    public void addDrink(Drink d){
-        basicDrinks.add(d);
+    public ArrayList<String> getDrinkTypes() {
+        return db.getDrinkTypes();
     }
 
-    public void addComponent(Component c){
-        components.add(c);
+    public HashMap<Integer, Drink> getBasicDrinks() {
+        return db.getBasicDrinks();
     }
+
+    public HashMap<Integer, Drink> getBasicDrinks(String drinkType) {
+        return db.getBasicDrinks(drinkType);
+    }
+
+    public HashMap<Integer, Component> getComponents() {
+        return db.getComponents();
+    }
+
+    public HashMap<Integer, Component> getSuitedComponents(String drinkType) { return db.getSuitedComponents(drinkType); }
+
+    public  ArrayList<String> getDrinkSize(){
+        return db.getDrinkSize();
+    }
+
+    public void addDrink(Drink d) {
+        db.addBasicDrink(d);
+    }
+
+    public void addComponent(Component c) {
+        db.addComponent(c);
+    }
+
 
     /*Вывести меню: все напитки, компоненты и их цены*/
     public void show(){
         System.out.println("Drinks: ");
-        for( Drink d : basicDrinks){
-            System.out.println(d);
-        }
+        System.out.println(db.getBasicDrinks());
         System.out.println("Components: ");
-        for( Component c : components){
-            System.out.println(c);
-        }
+        System.out.println(db.getComponents());
 
     }
 
 
 }
+

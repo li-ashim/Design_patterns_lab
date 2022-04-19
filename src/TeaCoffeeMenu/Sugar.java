@@ -3,8 +3,12 @@ package TeaCoffeeMenu;
 public class Sugar extends Component{
     private static Sugar instance;
 
-    Sugar(float price, String name) {
+
+
+    private Sugar(float price, String name) {
         super(price, name);
+        suitedTypes.add("чай");
+        suitedTypes.add("кофе");
     }
 
     public static Sugar getInstance(){
