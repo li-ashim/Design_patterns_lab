@@ -3,6 +3,8 @@ package TeaCoffeeMenu.Drinks;
 import TeaCoffeeMenu.Components.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 
 public class Drink {
     private String type;
@@ -33,7 +35,11 @@ public class Drink {
     }
 
     public String getFullProductName() {
-        return type + " - " + name + " - " + manufacturer;
+        return name + " (" + manufacturer + ")";
+    }
+
+    public double getBasicPrice() {
+        return basicPrice;
     }
 
     public double calculateCost() {
@@ -47,6 +53,13 @@ public class Drink {
     public Drink copy() {
         return new Drink(this.type, this.name,
                 this.manufacturer, this.basicPrice);
+    }
+
+    public void print() {
+        System.out.println(name + ": " + basicPrice);
+        for (Component c : new HashSet<Component>(components)) {
+            System.out.println("\t+" + c + " x" + Collections.frequency(components, c));
+        }
     }
 
     @Override

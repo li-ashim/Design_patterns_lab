@@ -23,6 +23,16 @@ public class Order {
         return totalCost;
     }
 
+    public void print() {
+        System.out.println("\n" + "_".repeat(30));
+        System.out.println("Ваш заказ:");
+        for (Drink d : items) {
+            d.print();
+        }
+        System.out.println("Итого: " + getTotalCost());
+        System.out.println("_".repeat(30) + "\n");
+    }
+
     @Override
     public String toString() {
         return "Order{" +

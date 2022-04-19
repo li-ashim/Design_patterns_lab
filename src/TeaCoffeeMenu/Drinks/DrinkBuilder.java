@@ -22,7 +22,6 @@ public class DrinkBuilder {
         result.addComponent(Menu.getInstance().getComponents().get(componentId));  // Проверка соответствия айди делается в вызывающем коде.
     }
 
-    // Is not tested !!!
     public void removeComponent(int componentId) {
         result.removeComponent(Menu.getInstance().getComponents().get(componentId));
     }

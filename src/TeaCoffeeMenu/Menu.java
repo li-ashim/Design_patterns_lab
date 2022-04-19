@@ -38,12 +38,21 @@ public class Menu {
 
     public HashMap<Integer, Component> getSuitedComponents(String drinkType) { return db.getSuitedComponents(drinkType); }
 
-    public void addDrink(Drink d) {
-        db.addBasicDrink(d);
-    }
-
-    public void addComponent(Component c) {
-        db.addComponent(c);
+    public void print() {
+        System.out.println("Меню:");
+        for (String type : getDrinkTypes()) {
+            if (getBasicDrinks(type).isEmpty()) {
+                continue;
+            }
+            System.out.println("\t" + type.toUpperCase());
+            for (Drink d : getBasicDrinks(type).values()) {
+                System.out.println("\t\t - " + d.getFullProductName() + ": " + d.getBasicPrice());
+            }
+            System.out.println("\t\tДополнения:".toUpperCase());
+            for (Component c : getSuitedComponents(type).values()) {
+                System.out.println("\t\t\t" + c.getName() + ": " + c.getPrice());
+            }
+        }
     }
 
     @Override
@@ -71,9 +80,11 @@ class DatabaseDummy {
         drinkTypes.add("чай");
         drinkTypes.add("кофе");
 
-        basicDrinks.put(1, new Drink("чай", "чёрный", "вкусный чай", 50));
-        basicDrinks.put(2, new Drink("чай", "зелёный", "вкусный чай", 55));
-        basicDrinks.put(3, new Drink("чай", "чёрный", "чай-чай", 45));
+        basicDrinks.put(1, new Drink("чай", "чёрный чай", "вкусный чай", 50));
+        basicDrinks.put(2, new Drink("чай", "зелёный чай", "вкусный чай", 55));
+        basicDrinks.put(3, new Drink("чай", "чёрный чай", "чай-чай", 45));
+        basicDrinks.put(4, new Drink("кофе", "черный кофе", "кофкофе", 60));
+        basicDrinks.put(5, new Drink("кофе", "кофе с молоком", "кофкофе", 70));
 
         components.put(1, Sugar.getInstance());
     }

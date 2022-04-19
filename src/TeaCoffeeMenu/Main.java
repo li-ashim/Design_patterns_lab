@@ -2,6 +2,8 @@ package TeaCoffeeMenu;
 
 import TeaCoffeeMenu.Customer.Customer;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -9,7 +11,7 @@ public class Main {
 
         Customer c = new Customer();
         c.addDrinkToOrder();
-        System.out.println(c.makeOrder());
+        c.makeOrder();
         c.payBill();
     }
 }

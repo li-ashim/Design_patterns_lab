@@ -15,10 +15,7 @@ public abstract class Component {
 
     @Override
     public String toString() {
-        return "Component{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return name + ": " + price;
     }
 
     public ArrayList<String> getSuitedDrinkTypes() {
