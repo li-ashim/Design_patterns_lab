@@ -8,6 +8,7 @@ public class Sugar extends Component {
         suitedDrinkTypes.add("чай");
         suitedDrinkTypes.add("кофе");
     }
+
     static public Sugar getInstance() {
         if (instance == null) {
             instance = new Sugar("сахар", 5);

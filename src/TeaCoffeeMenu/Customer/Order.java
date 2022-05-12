@@ -3,12 +3,20 @@ package TeaCoffeeMenu.Customer;
 import TeaCoffeeMenu.Drinks.Drink;
 
 import java.util.ArrayList;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Order {
+    private static final ReentrantLock orderNumberLock = new ReentrantLock();
+    private static int lastOrderNumber = 1;  // numeration is agreed among threads of one process
+    private int orderNumber;
     private ArrayList<Drink> items;
 
     public Order() {
         items = new ArrayList<>();
+
+        orderNumberLock.lock();
+        orderNumber = lastOrderNumber++;
+        orderNumberLock.lock();
     }
 
     public ArrayList<Drink> getItems() {
@@ -23,20 +31,16 @@ public class Order {
         return totalCost;
     }
 
-    public void print() {
-        System.out.println("\n" + "_".repeat(30));
-        System.out.println("Ваш заказ:");
-        for (Drink d : items) {
-            d.print();
-        }
-        System.out.println("Итого: " + getTotalCost());
-        System.out.println("_".repeat(30) + "\n");
-    }
-
     @Override
     public String toString() {
-        return "Order{" +
-                "items=" + items +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n").append("_".repeat(30)).append("\n");
+        sb.append("Заказ №").append(orderNumber).append("\n");
+        for (Drink d : items) {
+            sb.append(d).append("\n");
+        }
+        sb.append("Итого: ").append(getTotalCost()).append("\n");
+        sb.append("_".repeat(30));
+        return sb.toString();
     }
 }

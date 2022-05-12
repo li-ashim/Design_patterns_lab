@@ -55,21 +55,13 @@ public class Drink {
                 this.manufacturer, this.basicPrice);
     }
 
-    public void print() {
-        System.out.println(name + ": " + basicPrice);
-        for (Component c : new HashSet<Component>(components)) {
-            System.out.println("\t+" + c + " x" + Collections.frequency(components, c));
-        }
-    }
-
     @Override
     public String toString() {
-        return "Drink{" +
-                "type='" + type + '\'' +
-                ", name='" + name + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", basicPrice=" + basicPrice +
-                ", components=" + components +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(name).append(": ").append(basicPrice);
+        for (Component c : new HashSet<Component>(components)) {
+            sb.append("\t+").append(c).append(" x").append(Collections.frequency(components, c));
+        }
+        return sb.toString();
     }
 }

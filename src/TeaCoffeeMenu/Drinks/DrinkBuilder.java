@@ -6,7 +6,9 @@ public class DrinkBuilder {
     private Drink result;
     private static DrinkBuilder instance;
 
-    private DrinkBuilder() {}
+    private DrinkBuilder() {
+    }
+
     public static DrinkBuilder getInstance() {
         if (instance == null) {
             instance = new DrinkBuilder();

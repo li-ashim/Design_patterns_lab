@@ -11,7 +11,10 @@ public class Menu {
 
     private static Menu instance;
     private static DatabaseDummy db;
-    private Menu() {}
+
+    private Menu() {
+    }
+
     public static Menu getInstance() {
         if (instance == null) {
             db = DatabaseDummy.getInstance();
@@ -36,7 +39,9 @@ public class Menu {
         return db.getComponents();
     }
 
-    public HashMap<Integer, Component> getSuitedComponents(String drinkType) { return db.getSuitedComponents(drinkType); }
+    public HashMap<Integer, Component> getSuitedComponents(String drinkType) {
+        return db.getSuitedComponents(drinkType);
+    }
 
     public void print() {
         System.out.println("Меню:");
@@ -88,6 +93,7 @@ class DatabaseDummy {
 
         components.put(1, Sugar.getInstance());
     }
+
     public static DatabaseDummy getInstance() {
         if (instance == null) {
             instance = new DatabaseDummy();
@@ -128,7 +134,7 @@ class DatabaseDummy {
     }
 
     public void addBasicDrink(Drink d) {
-        basicDrinks.put(basicDrinks.size()+1, d);
+        basicDrinks.put(basicDrinks.size() + 1, d);
     }
 
     public HashMap<Integer, Component> getComponents() {
@@ -136,6 +142,6 @@ class DatabaseDummy {
     }
 
     public void addComponent(Component c) {
-        components.put(components.size()+1, c);
+        components.put(components.size() + 1, c);
     }
 }

@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Customer {
-    private int id;
-    private String name;
     private Order order;
 
     public Customer() {
@@ -29,7 +27,7 @@ public class Customer {
             ++i;
         }
         System.out.print("Выберите вид напитка (введите номер напитка): ");
-        String drinkType = menu.getDrinkTypes().get(scanner.nextInt()-1);
+        String drinkType = menu.getDrinkTypes().get(scanner.nextInt() - 1);
 
         DrinkBuilder db = DrinkBuilder.getInstance();
 
@@ -37,7 +35,7 @@ public class Customer {
         HashMap<Integer, Drink> typeDrinks = menu.getBasicDrinks(drinkType);
         for (Integer id : typeDrinks.keySet()) {
             System.out.print("\t" + id + ": ");
-            typeDrinks.get(id).print();
+            System.out.println(typeDrinks.get(id));
         }
         System.out.print("Выберите напиток (введите номер напитка): ");
         int drinkId = scanner.nextInt();
@@ -84,14 +82,11 @@ public class Customer {
         order.getItems().add(db.getResult());
 
         System.out.println("Элемент добавлен в заказ.");
-        db.getResult().print();
+        System.out.println(db.getResult());
         db.reset();
     }
-    public Order makeOrder() {
-        order.print();
-        return order;
-    }
-    public void payBill() {
-        System.out.println("Счёт оплачен: " + order.getTotalCost());
+
+    public String payBill() {
+        return order.toString();
     }
 }
