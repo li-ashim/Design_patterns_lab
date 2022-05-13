@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) {
-        // establish the connection with server port 8888
         Socket s = null;
         while (true) {
             try {
@@ -28,7 +27,7 @@ public class Client {
 
                 String bill = customer.payBill();
 
-
+                // establish the connection with server port 8888
                 s = new Socket("localhost", 8888);
                 // obtaining input and out streams
                 DataInputStream dis = new DataInputStream(s.getInputStream());
@@ -37,7 +36,6 @@ public class Client {
                 System.out.println(bill);
                 dos.writeUTF(bill);
 
-                // printing date or time as requested by client
                 String response = dis.readUTF();
                 System.out.println(response);
 

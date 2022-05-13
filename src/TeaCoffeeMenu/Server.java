@@ -5,20 +5,14 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class Server {
 
     public static void main(String[] args) {
 
         Menu menu = Menu.getInstance();
-
-        System.out.println("Finished all threads");
 
         ServerSocket ss;
         // server is listening on port 8888
@@ -34,8 +28,8 @@ public class Server {
                 Runtime.getRuntime().availableProcessors()
         );
 
+        Socket s = null;
         while (true) {
-            Socket s = null;
             try {
                 // socket object to receive incoming client requests
                 s = ss.accept();

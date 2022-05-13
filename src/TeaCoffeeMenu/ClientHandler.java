@@ -1,6 +1,5 @@
 package TeaCoffeeMenu;
 
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -31,7 +30,6 @@ class ClientHandler extends Thread {
         try {
             // receive the order from client
             clientOrder = dis.readUTF();
-
             dos.writeUTF(response);
 
             Date date = new Date();
